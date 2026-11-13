@@ -12,6 +12,13 @@
   --xrock-white: #FFFFFF;
   --xrock-gray-100: #E8E8E8;
 
+  --xroack-red: #F83838;
+  --xroack-red-dark: #980000;
+  --xroack-crimson: #F00038;
+  --xroack-black: #080808;
+  --xroack-white: #FFFFFF;
+  --xroack-gray-100: #E8E8E8;
+
   /* Supporting neutrals */
   --xrock-gray-50: #F7F7F7;
   --xrock-gray-300: #D1D1D1;
@@ -19,10 +26,19 @@
   --xrock-gray-800: #262626;
   --xrock-gray-950: #111111;
 
+  --xroack-gray-50: #F7F7F7;
+  --xroack-gray-300: #D1D1D1;
+  --xroack-gray-600: #666666;
+  --xroack-gray-800: #262626;
+  --xroack-gray-950: #111111;
+
   /* Typography */
   --font-display: "Space Grotesk", Arial, sans-serif;
   --font-body: "Inter", Arial, sans-serif;
   --font-code: "JetBrains Mono", Consolas, monospace;
+  --font-space-grotesk: "Space Grotesk", Arial, sans-serif;
+  --font-inter: "Inter", Arial, sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", Consolas, monospace;
 
   /* Layout */
   --content-max: 1280px;
@@ -109,17 +125,20 @@
 }
 
 /* Custom editorial utility classes */
-.xrock-container {
+.xrock-container,
+.xroack-container {
   width: min(var(--content-max), calc(100% - 2 * var(--page-gutter)));
   margin-inline: auto;
 }
 
-.xrock-article-body {
+.xrock-article-body,
+.xroack-article-body {
   width: min(100%, var(--article-max));
   margin-inline: auto;
 }
 
-.xrock-button-primary {
+.xrock-button-primary,
+.xroack-button-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -133,13 +152,15 @@
   transition: all var(--transition-ui);
 }
 
-.xrock-button-primary:hover {
+.xrock-button-primary:hover,
+.xroack-button-primary:hover {
   border-color: var(--xrock-red-dark);
   background: var(--xrock-red-dark);
   transform: translateY(-1px);
 }
 
-.xrock-card {
+.xrock-card,
+.xroack-card {
   overflow: hidden;
   border: var(--border-subtle);
   border-radius: var(--radius-card);
@@ -147,13 +168,15 @@
   transition: transform var(--transition-ui), box-shadow var(--transition-ui), border-color var(--transition-ui);
 }
 
-.xrock-card:hover {
+.xrock-card:hover,
+.xroack-card:hover {
   border-color: var(--xrock-gray-300);
   box-shadow: 0 10px 25px -5px rgba(8, 8, 8, 0.06);
   transform: translateY(-2px);
 }
 
-.xrock-category {
+.xrock-category,
+.xroack-category {
   color: var(--xrock-crimson);
   font: 700 12px var(--font-body);
   letter-spacing: 0.08em;
@@ -163,7 +186,8 @@
   gap: 6px;
 }
 
-.xrock-category::before {
+.xrock-category::before,
+.xroack-category::before {
   content: "";
   display: inline-block;
   width: 6px;

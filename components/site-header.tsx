@@ -49,7 +49,7 @@ export function SiteHeader() {
             </div>
             <div className="flex flex-col">
               <span className="font-display font-extrabold text-2xl sm:text-[26px] tracking-tight text-xrock-black leading-none group-hover:text-xrock-red-dark transition-colors">
-                XROCK<span className="text-xrock-red">.</span>
+                XROACK<span className="text-xrock-red">.</span>
               </span>
               <span className="text-[10px] font-mono tracking-widest uppercase text-xrock-gray-600 font-semibold mt-0.5">
                 Cybersecurity Intel

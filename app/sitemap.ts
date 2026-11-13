@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { latestArticles, practicalGuides, exploreTopics, heroArticle } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://xrock-security.com";
+  const baseUrl = "https://xroack-security.com";
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

@@ -1,6 +1,6 @@
-# Xrock — Cybersecurity Publication & Threat Intelligence Platform
+# Xroack — Cybersecurity Publication & Threat Intelligence Platform
 
-Xrock is a modern, high-performance cybersecurity editorial newsroom and educational publication built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Sanity CMS**, strictly implemented according to the `Axrok-Design-Specification.md` and `Axrok-design-tokens.css` design system.
+Xroack is a modern, high-performance cybersecurity editorial newsroom and educational publication built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Sanity CMS**, strictly implemented according to the design specification and token system.
 
 ---
 

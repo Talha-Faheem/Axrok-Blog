@@ -16,7 +16,7 @@ export function SiteFooter() {
                 X
               </div>
               <span className="font-display font-extrabold text-2xl tracking-tight text-white">
-                XROCK<span className="text-xrock-red">.</span>
+                XROACK<span className="text-xrock-red">.</span>
               </span>
             </div>
 
@@ -26,7 +26,7 @@ export function SiteFooter() {
 
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://github.com"
+                href="https://github.com/xroack"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Repository"
@@ -35,7 +35,7 @@ export function SiteFooter() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://twitter.com/xroack_sec"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter X profile"
@@ -158,7 +158,7 @@ export function SiteFooter() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-xrock-gray-600 font-mono">
-          <p>© {currentYear} Xrock. All rights reserved. Built with Next.js, Sanity CMS & Tailwind CSS.</p>
+          <p>© {currentYear} Xroack. All rights reserved. Built with Next.js, Sanity CMS & Tailwind CSS.</p>
           <div className="flex items-center gap-4">
             <span className="inline-flex items-center gap-1.5 text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400"></span>

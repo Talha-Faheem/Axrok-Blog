@@ -1,12 +1,12 @@
 import { Article, PracticalGuide, SecurityAdvisory, TopicItem } from "@/types";
 
 export const siteMetadata = {
-  title: "Xrock — Understand Threats. Build Stronger Defenses.",
+  title: "Xroack — Understand Threats. Build Stronger Defenses.",
   description:
     "Credible, technically informed cybersecurity news, threat intelligence, vulnerability analyses, practical lab tutorials, and defense architecture.",
-  siteUrl: "https://xrock-security.com",
-  author: "Xrock Editorial Team",
-  twitterHandle: "@xrock_sec",
+  siteUrl: "https://xroack-security.com",
+  author: "Xroack Editorial Team",
+  twitterHandle: "@xroack_sec",
 };
 
 export const heroArticle: Article = {
