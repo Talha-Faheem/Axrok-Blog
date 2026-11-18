@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const category_controller_js_1 = require("../controllers/category.controller.js");
+const auth_middleware_js_1 = require("../middleware/auth.middleware.js");
+const router = (0, express_1.Router)();
+router.get("/", category_controller_js_1.getCategories);
+router.get("/slug/:slug", category_controller_js_1.getCategoryBySlug);
+router.post("/", auth_middleware_js_1.requireAdmin, category_controller_js_1.createCategory);
+router.put("/:id", auth_middleware_js_1.requireAdmin, category_controller_js_1.updateCategory);
+router.delete("/:id", auth_middleware_js_1.requireAdmin, category_controller_js_1.deleteCategory);
+exports.default = router;

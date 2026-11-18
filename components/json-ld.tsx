@@ -4,8 +4,8 @@ export function JsonLd() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Xroack",
-    "alternateName": "Xroack Cybersecurity Intelligence",
+    "name": "Axrok",
+    "alternateName": "Axrok Cybersecurity Intelligence",
     "url": siteMetadata.siteUrl,
     "description": siteMetadata.description,
     "potentialAction": {
@@ -18,14 +18,14 @@ export function JsonLd() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "NewsMediaOrganization",
-    "name": "Xroack",
+    "name": "Axrok",
     "url": siteMetadata.siteUrl,
     "logo": `${siteMetadata.siteUrl}/logo.png`,
     "description": siteMetadata.description,
     "publishingPrinciples": `${siteMetadata.siteUrl}/editorial-guidelines`,
     "sameAs": [
-      "https://twitter.com/xroack_sec",
-      "https://github.com/xroack",
+      "https://twitter.com/axrok_sec",
+      "https://github.com/axrok",
     ],
   };
 
@@ -48,7 +48,7 @@ export function JsonLd() {
           },
           "publisher": {
             "@type": "Organization",
-            "name": "Xroack",
+            "name": "Axrok",
           },
         },
       },
@@ -67,7 +67,7 @@ export function JsonLd() {
           },
           "publisher": {
             "@type": "Organization",
-            "name": "Xroack",
+            "name": "Axrok",
           },
         },
       })),

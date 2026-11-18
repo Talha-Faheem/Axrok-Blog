@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const newsletter_controller_js_1 = require("../controllers/newsletter.controller.js");
+const auth_middleware_js_1 = require("../middleware/auth.middleware.js");
+const router = (0, express_1.Router)();
+router.post("/subscribe", newsletter_controller_js_1.subscribeNewsletter);
+router.get("/subscribers", auth_middleware_js_1.requireAdmin, newsletter_controller_js_1.getSubscribers);
+router.get("/export", auth_middleware_js_1.requireAdmin, newsletter_controller_js_1.exportSubscribersCsv);
+router.delete("/subscribers/:id", auth_middleware_js_1.requireAdmin, newsletter_controller_js_1.deleteSubscriber);
+exports.default = router;

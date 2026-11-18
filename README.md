@@ -1,21 +1,6 @@
-# AXROK — Cybersecurity Publication & Threat Intelligence Platform
+# Xroack — Cybersecurity Publication & Threat Intelligence Platform
 
-## 1. Project Overview
-
-**AXROK** is a modern cybersecurity publication, technical research, and threat intelligence platform designed to deliver high-quality security news, vulnerability analysis, educational resources, and practical cybersecurity guides.
-
-The platform combines the experience of a professional cybersecurity newsroom with the functionality of a technical knowledge hub. It provides security professionals, developers, researchers, students, and technology enthusiasts with reliable, structured, and accessible cybersecurity information.
-
-Built using **Next.js 15, TypeScript, Tailwind CSS, and Sanity CMS**, AXROK emphasizes performance, accessibility, scalability, search engine optimization, content discoverability, and a premium editorial experience.
-
-### Core Objectives
-
-- Publish cybersecurity news, research, and threat intelligence.
-- Provide detailed vulnerability analysis and CVE advisories.
-- Deliver practical cybersecurity tutorials and technical guides.
-- Organize content through a structured cybersecurity taxonomy.
-- Establish a recognizable and trustworthy cybersecurity publication brand.
-- Provide a scalable editorial infrastructure for future expansion.
+Xroack is a modern, high-performance cybersecurity editorial newsroom and educational publication built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Sanity CMS**, strictly implemented according to the design specification and token system.
 
 ---
 

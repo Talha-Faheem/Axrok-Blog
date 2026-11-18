@@ -1,12 +1,12 @@
 import { Article, PracticalGuide, SecurityAdvisory, TopicItem } from "@/types";
 
 export const siteMetadata = {
-  title: "Xroack — Understand Threats. Build Stronger Defenses.",
+  title: "AXROK — Understand Threats. Build Stronger Defenses.",
   description:
     "Credible, technically informed cybersecurity news, threat intelligence, vulnerability analyses, practical lab tutorials, and defense architecture.",
-  siteUrl: "https://xroack-security.com",
-  author: "Xroack Editorial Team",
-  twitterHandle: "@xroack_sec",
+  siteUrl: "https://axrok-security.com",
+  author: "AXROK Editorial Team",
+  twitterHandle: "@axrok_sec",
 };
 
 export const heroArticle: Article = {
@@ -136,6 +136,224 @@ export const latestArticles: Article[] = [
     publishedAt: "2026-11-08T13:10:00Z",
     readingTime: "4 min read",
     tags: ["DevSecOps", "Supply Chain", "CI/CD"],
+  },
+];
+
+export const featuredNewsArticle: Article = {
+  id: "news-featured-1",
+  title: "Critical Authentication Bypass Uncovered in Enterprise Identity Gateways",
+  slug: "critical-authentication-bypass-enterprise-identity-gateways",
+  excerpt:
+    "Security researchers have discovered a high-severity logic flaw in SAML assertion response processors, enabling unauthenticated remote actors to forge administrative tokens across federated cloud deployments.",
+  coverImage:
+    "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=1200&q=80",
+  category: {
+    id: "app-sec",
+    title: "Web & Application Security",
+    slug: "web-app-security",
+    description: "Defending application logic, APIs, CI/CD pipelines, and software supply chains.",
+  },
+  author: {
+    id: "elena-rostova",
+    name: "Dr. Elena Rostova",
+    role: "Vulnerability Analyst",
+    avatar:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&q=80",
+  },
+  publishedAt: "2026-11-13T10:00:00Z",
+  readingTime: "6 min read",
+  featured: true,
+  tags: ["Authentication", "SAML", "Zero Trust", "CVE-2026-4421"],
+};
+
+export const newsArticles: Article[] = [
+  ...latestArticles,
+  {
+    id: "news-2",
+    title: "CISA Issues Binding Operational Directive on Perimeter VPN Firmware Hardening",
+    slug: "cisa-binding-operational-directive-vpn-firmware",
+    excerpt:
+      "Federal agencies are mandated to patch or isolate internet-facing SSL-VPN appliances following continuous exploitation of unauthenticated memory corruption bugs.",
+    coverImage:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+    category: {
+      id: "threat-intel",
+      title: "Threat Intelligence",
+      slug: "threat-intelligence",
+      description: "Deep technical breakdowns of active threat vectors, adversaries, and telemetry.",
+    },
+    author: {
+      id: "marcus-vance",
+      name: "Marcus Vance",
+      role: "Lead Offensive Security Researcher",
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80",
+    },
+    publishedAt: "2026-11-12T18:20:00Z",
+    readingTime: "4 min read",
+    tags: ["CISA", "VPN", "Federal Advisory"],
+  },
+  {
+    id: "news-3",
+    title: "Adversarial Prompt Steganography Bypasses AI Safety Alignment Filters",
+    slug: "adversarial-prompt-steganography-ai-safety-filters",
+    excerpt:
+      "New red-team findings demonstrate that zero-width unicode characters combined with semantic token fragmentation can induce unauthorized code generation from production LLMs.",
+    coverImage:
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    category: {
+      id: "ai-sec",
+      title: "AI Security",
+      slug: "ai-security",
+      description: "Prompt injection, LLM jailbreaks, and adversarial ML defenses.",
+    },
+    author: {
+      id: "sarah-jenkins",
+      name: "Sarah Jenkins",
+      role: "Cryptographic Systems Architect",
+      avatar:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80",
+    },
+    publishedAt: "2026-11-12T13:45:00Z",
+    readingTime: "7 min read",
+    tags: ["LLM Security", "Red Teaming", "Prompt Injection"],
+  },
+  {
+    id: "news-4",
+    title: "Healthcare Networks Targeted by Stealthy Ransomware Exploiting RDP Misconfigurations",
+    slug: "healthcare-targeted-stealthy-ransomware-rdp-misconfiguration",
+    excerpt:
+      "Incident telemetry reveals affiliates utilizing modified Cobalt Strike beacons with living-off-the-land binaries to harvest Active Directory credentials prior to impact.",
+    coverImage:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+    category: {
+      id: "malware-analysis",
+      title: "Malware & Ransomware",
+      slug: "malware-ransomware",
+      description: "Reverse engineering malware strains, campaign infrastructure, and IoCs.",
+    },
+    author: {
+      id: "david-chen",
+      name: "David Chen",
+      role: "Senior Incident Responder",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80",
+    },
+    publishedAt: "2026-11-11T15:30:00Z",
+    readingTime: "5 min read",
+    tags: ["Active Directory", "RDP", "Healthcare Security"],
+  },
+  {
+    id: "news-5",
+    title: "BGP Route Leak Disrupts Financial Data Transit Across European Exchanges",
+    slug: "bgp-route-leak-disrupts-financial-transit-europe",
+    excerpt:
+      "A misconfigured autonomous system broadcast invalid prefixes, triggering widespread traffic blackholing and highlighting ongoing gaps in RPKI route origin validation.",
+    coverImage:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+    category: {
+      id: "network-sec",
+      title: "Network Security",
+      slug: "network-security",
+      description: "Protocols, firewalls, zero trust overlays, and cryptographic architectures.",
+    },
+    author: {
+      id: "sarah-jenkins",
+      name: "Sarah Jenkins",
+      role: "Cryptographic Systems Architect",
+      avatar:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80",
+    },
+    publishedAt: "2026-11-10T11:10:00Z",
+    readingTime: "6 min read",
+    tags: ["BGP", "RPKI", "Routing Security"],
+  },
+  {
+    id: "news-6",
+    title: "Hardware Side-Channel Attack Extracted Ephemeral TLS Keys in Multi-Tenant Hypervisors",
+    slug: "hardware-side-channel-ephemeral-tls-keys-hypervisors",
+    excerpt:
+      "Academic researchers demonstrate physical cache line contention timing attacks capable of reconstructing private RSA and ECDSA keys across shared CPU execution cores.",
+    coverImage:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    category: {
+      id: "vuln-research",
+      title: "Vulnerability Research",
+      slug: "vulnerability-research",
+      description: "Root-cause analyses of CVEs, exploit primitives, and vendor mitigations.",
+    },
+    author: {
+      id: "elena-rostova",
+      name: "Dr. Elena Rostova",
+      role: "Vulnerability Analyst",
+      avatar:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&q=80",
+    },
+    publishedAt: "2026-11-09T17:00:00Z",
+    readingTime: "8 min read",
+    tags: ["Side-Channel", "Hardware Security", "Cloud Tenants"],
+  },
+];
+
+export const trendingNews = [
+  {
+    rank: "01",
+    title: "Kernel-Level Zero-Day in Virtualization Hypervisors Patched Across Cloud Providers",
+    slug: "kernel-zero-day-virtualization-hypervisors-patched",
+    category: "Vulnerability Research",
+    views: "18.4k",
+  },
+  {
+    rank: "02",
+    title: "Critical Authentication Bypass Uncovered in Enterprise Identity Gateways",
+    slug: "critical-authentication-bypass-enterprise-identity-gateways",
+    category: "Web & AppSec",
+    views: "14.2k",
+  },
+  {
+    rank: "03",
+    title: "Ransomware Cartels Pivot to Silent Cloud Storage API Data Exfiltration",
+    slug: "ransomware-cartels-pivot-silent-cloud-storage-exfiltration",
+    category: "Threat Intel",
+    views: "12.8k",
+  },
+  {
+    rank: "04",
+    title: "Adversarial Prompt Steganography Bypasses AI Safety Alignment Filters",
+    slug: "adversarial-prompt-steganography-ai-safety-filters",
+    category: "AI Security",
+    views: "10.5k",
+  },
+  {
+    rank: "05",
+    title: "Post-Quantum Cryptography Migration: Practical Deadlines for TLS Reverse Proxies",
+    slug: "post-quantum-cryptography-migration-deadlines-tls",
+    category: "Network Security",
+    views: "9.1k",
+  },
+];
+
+export const recentCVEAlerts = [
+  {
+    cve: "CVE-2024-38077",
+    severity: "Critical",
+    score: 9.8,
+    name: "Windows RDL Service RCE (MadLicense)",
+    date: "Aug 14, 2026",
+  },
+  {
+    cve: "CVE-2024-4577",
+    severity: "Critical",
+    score: 9.8,
+    name: "PHP CGI Argument Injection RCE",
+    date: "Jun 06, 2026",
+  },
+  {
+    cve: "CVE-2024-21413",
+    severity: "High",
+    score: 8.8,
+    name: "Microsoft Outlook Moniker Security Bypass",
+    date: "Feb 13, 2026",
   },
 ];
 

@@ -9,6 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        axrok: {
+          red: {
+            DEFAULT: "#F83838",
+            dark: "#980000",
+            crimson: "#F00038",
+          },
+          black: "#080808",
+          white: "#FFFFFF",
+          gray: {
+            50: "#F7F7F7",
+            100: "#E8E8E8",
+            300: "#D1D1D1",
+            600: "#666666",
+            800: "#262626",
+            950: "#111111",
+          },
+        },
         xroack: {
           red: {
             DEFAULT: "#F83838",

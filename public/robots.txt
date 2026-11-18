@@ -3,5 +3,5 @@ Allow: /
 Disallow: /api/
 Disallow: /studio/
 
-Sitemap: https://xroack-security.com/sitemap.xml
+Sitemap: https://axrok-security.com/sitemap.xml
 

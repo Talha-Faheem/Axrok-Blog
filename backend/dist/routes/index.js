@@ -1,0 +1,28 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const health_routes_js_1 = __importDefault(require("./health.routes.js"));
+const auth_routes_js_1 = __importDefault(require("./auth.routes.js"));
+const post_routes_js_1 = __importDefault(require("./post.routes.js"));
+const category_routes_js_1 = __importDefault(require("./category.routes.js"));
+const tag_routes_js_1 = __importDefault(require("./tag.routes.js"));
+const author_routes_js_1 = __importDefault(require("./author.routes.js"));
+const media_routes_js_1 = __importDefault(require("./media.routes.js"));
+const homepage_routes_js_1 = __importDefault(require("./homepage.routes.js"));
+const newsletter_routes_js_1 = __importDefault(require("./newsletter.routes.js"));
+const page_routes_js_1 = __importDefault(require("./page.routes.js"));
+const router = (0, express_1.Router)();
+router.use("/health", health_routes_js_1.default);
+router.use("/auth", auth_routes_js_1.default);
+router.use("/posts", post_routes_js_1.default);
+router.use("/categories", category_routes_js_1.default);
+router.use("/tags", tag_routes_js_1.default);
+router.use("/authors", author_routes_js_1.default);
+router.use("/media", media_routes_js_1.default);
+router.use("/homepage", homepage_routes_js_1.default);
+router.use("/newsletter", newsletter_routes_js_1.default);
+router.use("/pages", page_routes_js_1.default);
+exports.default = router;

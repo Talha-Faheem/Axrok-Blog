@@ -1,70 +1,72 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
-import { Search, X, BookOpen, ExternalLink, Shield, Bug, ArrowRight } from "lucide-react";
-import { latestArticles, practicalGuides, heroArticle } from "@/lib/data";
+import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Search, X, Loader2, ArrowRight, Shield, FileText, Calendar, Clock } from "lucide-react";
 
 interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+interface SearchPost {
+  _id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  category?: {
+    name: string;
+    slug: string;
+    color?: string;
+  };
+  publishedAt?: string;
+  createdAt?: string;
+  readingTime?: number;
+}
+
 export function SearchModal({ isOpen, onClose }: SearchModalProps) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [results, setResults] = useState<SearchPost[]>([]);
+  const [loading, setLoading] = useState(false);
+  const debounceTimer = useRef<NodeJS.Timeout | null>(null);
 
-  const categories = ["All", "Threat Intelligence", "Vulnerability Research", "Malware & Ransomware", "Network Security", "Web & Application Security"];
+  useEffect(() => {
+    if (!query.trim()) {
+      setResults([]);
+      setLoading(false);
+      return;
+    }
 
-  // Aggregate searchable items
-  const allItems = useMemo(() => {
-    const list = [
-      {
-        id: heroArticle.id,
-        title: heroArticle.title,
-        excerpt: heroArticle.excerpt,
-        category: heroArticle.category.title,
-        href: `#hero-story`,
-        type: "Article",
-      },
-      ...latestArticles.map((a) => ({
-        id: a.id,
-        title: a.title,
-        excerpt: a.excerpt,
-        category: a.category.title,
-        href: `#${a.slug}`,
-        type: "Article",
-      })),
-      ...practicalGuides.map((g) => ({
-        id: g.id,
-        title: g.title,
-        excerpt: g.excerpt,
-        category: g.category,
-        href: `#guides`,
-        type: "Guide",
-      })),
-    ];
-    return list;
-  }, []);
+    setLoading(true);
+    if (debounceTimer.current) clearTimeout(debounceTimer.current);
 
-  const filteredItems = useMemo(() => {
-    return allItems.filter((item) => {
-      const matchesCategory =
-        selectedCategory === "All" || item.category.toLowerCase().includes(selectedCategory.toLowerCase());
-      const matchesQuery =
-        !query.trim() ||
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.excerpt.toLowerCase().includes(query.toLowerCase()) ||
-        item.category.toLowerCase().includes(query.toLowerCase());
-      return matchesCategory && matchesQuery;
-    });
-  }, [allItems, query, selectedCategory]);
+    debounceTimer.current = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/posts?search=${encodeURIComponent(query)}&limit=8&status=published`);
+        if (res.ok) {
+          const data = await res.json();
+          setResults(data.posts || []);
+        }
+      } catch (err) {
+        console.error("Search fetch failed", err);
+      } finally {
+        setLoading(false);
+      }
+    }, 250);
+
+    return () => {
+      if (debounceTimer.current) clearTimeout(debounceTimer.current);
+    };
+  }, [query]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        // toggle modal
+        onClose();
       }
     };
     if (isOpen) {
@@ -81,115 +83,126 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   if (!isOpen) return null;
 
+  const handleKeyDownInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && query.trim()) {
+      e.preventDefault();
+      onClose();
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
+  };
+
+  const handleItemClick = (slug: string) => {
+    onClose();
+    router.push(`/blog/${slug}`);
+  };
+
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-labelledby="search-modal-title"
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-xrock-black/70 backdrop-blur-sm transition-all"
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/75 backdrop-blur-sm transition-all"
+      onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl bg-white rounded-xl shadow-2xl border border-xrock-gray-100 overflow-hidden flex flex-col max-h-[80vh] animate-in fade-in zoom-in-95 duration-150"
+        className="w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden flex flex-col max-h-[82vh] animate-in fade-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header / Search Input */}
-        <div className="flex items-center px-4 py-3.5 border-b border-xrock-gray-100 gap-3">
-          <Search className="w-5 h-5 text-xrock-gray-600 shrink-0" />
+        <div className="flex items-center px-4 sm:px-5 py-4 border-b border-neutral-200 gap-3 bg-white">
+          <Search className="w-5 h-5 text-neutral-400 shrink-0" />
           <input
             id="search-modal-title"
             type="search"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search cybersecurity advisories, CVEs, guides..."
-            className="w-full bg-transparent text-xrock-black placeholder-xrock-gray-600 focus:outline-none text-base font-sans"
+            onKeyDown={handleKeyDownInput}
+            placeholder="Search cybersecurity news, threats, CVEs, or tactics... (Press Enter)"
+            className="flex-1 bg-transparent text-sm sm:text-base text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
           />
-          {query && (
-            <button
-              onClick={() => setQuery("")}
-              className="text-xs text-xrock-gray-600 hover:text-xrock-black px-2 py-1 bg-xrock-gray-50 rounded"
-            >
-              Clear
-            </button>
-          )}
+          {loading && <Loader2 className="w-4 h-4 text-[#F83838] animate-spin shrink-0" />}
           <button
             onClick={onClose}
-            aria-label="Close search"
-            className="p-1 rounded-md text-xrock-gray-600 hover:text-xrock-black hover:bg-xrock-gray-50 transition-colors"
+            aria-label="Close search dialog"
+            className="p-1 rounded-lg text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex items-center gap-1.5 px-4 py-2 bg-xrock-gray-50 border-b border-xrock-gray-100 overflow-x-auto text-xs no-scrollbar">
-          <span className="text-xrock-gray-600 font-medium mr-1 shrink-0">Filter:</span>
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-2.5 py-1 rounded-full font-medium transition-colors shrink-0 ${
-                selectedCategory === cat
-                  ? "bg-xrock-black text-white"
-                  : "bg-white text-xrock-gray-800 border border-xrock-gray-100 hover:border-xrock-gray-300"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Results List */}
-        <div className="p-4 overflow-y-auto space-y-3 flex-1">
-          {filteredItems.length > 0 ? (
-            filteredItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={onClose}
-                className="group block p-3.5 rounded-lg border border-xrock-gray-100 hover:border-xrock-red/50 hover:bg-xrock-gray-50 transition-all"
-              >
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-xrock-crimson font-sans">
-                      {item.category}
-                    </span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-xrock-gray-100 text-xrock-gray-600 font-mono">
-                      {item.type}
-                    </span>
-                  </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-xrock-gray-600 group-hover:text-xrock-red group-hover:translate-x-0.5 transition-all" />
-                </div>
-                <h4 className="text-sm font-semibold text-xrock-black group-hover:text-xrock-red-dark transition-colors line-clamp-1">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-xrock-gray-600 line-clamp-2 mt-1">
-                  {item.excerpt}
-                </p>
-              </a>
-            ))
-          ) : (
-            <div className="text-center py-12 px-4">
-              <Bug className="w-10 h-10 text-xrock-gray-300 mx-auto mb-3" />
-              <p className="text-sm font-semibold text-xrock-black">No articles found.</p>
-              <p className="text-xs text-xrock-gray-600 mt-1">
-                Try another keyword, clear the filter, or explore a topic from the home page.
-              </p>
+        {/* Results Area */}
+        <div className="overflow-y-auto p-4 space-y-2 flex-1 divide-y divide-neutral-100">
+          {query.trim() === "" ? (
+            <div className="py-8 text-center text-neutral-500 space-y-3">
+              <Shield className="w-8 h-8 text-neutral-300 mx-auto" />
+              <p className="text-sm font-medium">Type to search AXROK intelligence publication</p>
+              <div className="flex flex-wrap items-center justify-center gap-1.5 pt-2">
+                {["Ransomware", "Zero-Day", "Linux Kernel", "Active Directory", "Cloud Security", "Kubernetes"].map((term) => (
+                  <button
+                    key={term}
+                    onClick={() => setQuery(term)}
+                    className="text-xs px-2.5 py-1 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-700 transition-colors"
+                  >
+                    {term}
+                  </button>
+                ))}
+              </div>
             </div>
+          ) : results.length === 0 && !loading ? (
+            <div className="py-12 text-center text-neutral-500">
+              <p className="text-sm font-medium">No intelligence reports matching &ldquo;{query}&rdquo;</p>
+              <p className="text-xs text-neutral-400 mt-1">Try searching for CVE identifiers, threat actors, or attack vectors.</p>
+            </div>
+          ) : (
+            results.map((post) => (
+              <div
+                key={post._id}
+                onClick={() => handleItemClick(post.slug)}
+                className="pt-3 first:pt-0 pb-3 group cursor-pointer hover:bg-neutral-50 -mx-4 px-4 transition-colors"
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  {post.category && (
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-neutral-100 text-[#F83838]">
+                      {post.category.name}
+                    </span>
+                  )}
+                  {post.readingTime && (
+                    <span className="text-[11px] text-neutral-400 flex items-center gap-1 font-mono">
+                      <Clock className="w-3 h-3" />
+                      {post.readingTime}m read
+                    </span>
+                  )}
+                </div>
+                <h4 className="font-display font-bold text-sm sm:text-base text-neutral-900 group-hover:text-[#F83838] transition-colors line-clamp-1">
+                  {post.title}
+                </h4>
+                {post.excerpt && (
+                  <p className="text-xs text-neutral-600 line-clamp-2 mt-1 font-sans">
+                    {post.excerpt}
+                  </p>
+                )}
+              </div>
+            ))
           )}
         </div>
 
-        {/* Footer info */}
-        <div className="px-4 py-2.5 bg-xrock-gray-50 border-t border-xrock-gray-100 flex items-center justify-between text-[11px] text-xrock-gray-600">
-          <span>
-            Showing <strong className="text-xrock-black">{filteredItems.length}</strong> results
-          </span>
-          <div className="flex items-center gap-3">
-            <span>ESC to close</span>
+        {/* Footer */}
+        {query.trim() && (
+          <div className="px-4 py-3 bg-neutral-50 border-t border-neutral-200 flex items-center justify-between text-xs text-neutral-600">
+            <span>Press <kbd className="px-1.5 py-0.5 rounded bg-white border border-neutral-300 font-mono text-[10px]">Enter</kbd> for deep search</span>
+            <button
+              onClick={() => {
+                onClose();
+                router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+              }}
+              className="inline-flex items-center gap-1 text-[#F83838] font-semibold hover:underline"
+            >
+              View all results <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
 }
-

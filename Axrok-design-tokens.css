@@ -1,6 +1,13 @@
-/* Xrock design tokens — extracted/adapted from supplied visual reference */
+/* Axrok design tokens — extracted & adapted from supplied visual reference */
 :root {
   /* Brand palette */
+  --axrok-red: #F83838;
+  --axrok-red-dark: #980000;
+  --axrok-crimson: #F00038;
+  --axrok-black: #080808;
+  --axrok-white: #FFFFFF;
+  --axrok-gray-100: #E8E8E8;
+
   --xrock-red: #F83838;
   --xrock-red-dark: #980000;
   --xrock-crimson: #F00038;
@@ -8,12 +15,31 @@
   --xrock-white: #FFFFFF;
   --xrock-gray-100: #E8E8E8;
 
+  --xroack-red: #F83838;
+  --xroack-red-dark: #980000;
+  --xroack-crimson: #F00038;
+  --xroack-black: #080808;
+  --xroack-white: #FFFFFF;
+  --xroack-gray-100: #E8E8E8;
+
   /* Supporting neutrals */
+  --axrok-gray-50: #F7F7F7;
+  --axrok-gray-300: #D1D1D1;
+  --axrok-gray-600: #666666;
+  --axrok-gray-800: #262626;
+  --axrok-gray-950: #111111;
+
   --xrock-gray-50: #F7F7F7;
   --xrock-gray-300: #D1D1D1;
   --xrock-gray-600: #666666;
   --xrock-gray-800: #262626;
   --xrock-gray-950: #111111;
+
+  --xroack-gray-50: #F7F7F7;
+  --xroack-gray-300: #D1D1D1;
+  --xroack-gray-600: #666666;
+  --xroack-gray-800: #262626;
+  --xroack-gray-950: #111111;
 
   /* Typography */
   --font-display: "Space Grotesk", Arial, sans-serif;
@@ -25,7 +51,7 @@
   --article-max: 760px;
   --page-gutter: 32px;
 
-  /* Spacing */
+  /* Spacing scale */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -36,11 +62,15 @@
   --space-16: 64px;
   --space-20: 80px;
 
-  /* Shape and motion */
+  /* Shape, shadows and motion */
   --radius-card: 14px;
   --radius-control: 9px;
   --border-subtle: 1px solid var(--xrock-gray-100);
-  --transition-ui: 180ms ease;
+  --transition-ui: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-card: 0 4px 12px -2px rgba(8, 8, 8, 0.05), 0 2px 6px -1px rgba(8, 8, 8, 0.03);
+  --shadow-card-hover: 0 12px 28px -4px rgba(8, 8, 8, 0.08), 0 4px 12px -2px rgba(8, 8, 8, 0.04);
+  --shadow-glow: 0 0 24px -2px rgba(248, 56, 56, 0.35);
 }
 
 html {
@@ -79,17 +109,23 @@ a:hover {
   outline-offset: 3px;
 }
 
-.xrock-container {
+.xrock-container,
+.axrok-container,
+.xroack-container {
   width: min(var(--content-max), calc(100% - 2 * var(--page-gutter)));
   margin-inline: auto;
 }
 
-.xrock-article-body {
+.xrock-article-body,
+.axrok-article-body,
+.xroack-article-body {
   width: min(100%, var(--article-max));
   margin-inline: auto;
 }
 
-.xrock-button-primary {
+.xrock-button-primary,
+.axrok-button-primary,
+.xroack-button-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -100,22 +136,38 @@ a:hover {
   background: var(--xrock-red);
   color: var(--xrock-white);
   font: 600 15px var(--font-body);
-  transition: background var(--transition-ui), border-color var(--transition-ui);
+  transition: background var(--transition-ui), border-color var(--transition-ui), transform var(--transition-ui);
 }
 
-.xrock-button-primary:hover {
+.xrock-button-primary:hover,
+.axrok-button-primary:hover,
+.xroack-button-primary:hover {
   border-color: var(--xrock-red-dark);
   background: var(--xrock-red-dark);
+  transform: translateY(-1px);
 }
 
-.xrock-card {
+.xrock-card,
+.axrok-card,
+.xroack-card {
   overflow: hidden;
   border: var(--border-subtle);
   border-radius: var(--radius-card);
   background: var(--xrock-white);
+  transition: border-color var(--transition-ui), box-shadow var(--transition-ui), transform var(--transition-ui);
 }
 
-.xrock-category {
+.xrock-card:hover,
+.axrok-card:hover,
+.xroack-card:hover {
+  border-color: var(--xrock-gray-300);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.xrock-category,
+.axrok-category,
+.xroack-category {
   color: var(--xrock-red-dark);
   font: 700 12px var(--font-body);
   letter-spacing: 0.06em;

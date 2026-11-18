@@ -78,7 +78,7 @@ export async function subscribeToNewsletter(
 
     return {
       success: true,
-      message: "Subscription confirmed! Welcome to Xroack Security Intelligence.",
+      message: "Subscription confirmed! Welcome to Axrok Security Intelligence.",
     };
   } catch (error) {
     return {

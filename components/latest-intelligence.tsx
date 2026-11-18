@@ -1,46 +1,50 @@
+import Link from "next/link";
 import { ArticleCard } from "@/components/article-card";
-import { latestArticles } from "@/lib/data";
-import { ArrowRight, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { FadeIn, StaggerGroup, StaggerItem } from "@/components/motion";
 
-export function LatestIntelligence() {
-  const [firstItem, ...restItems] = latestArticles;
+interface LatestIntelligenceProps {
+  articles?: any[];
+}
+
+export function LatestIntelligence({ articles = [] }: LatestIntelligenceProps) {
+  if (articles.length === 0) return null;
 
   return (
-    <section id="latest-news" className="py-12 sm:py-16 bg-xrock-gray-50 border-b border-xrock-gray-100">
+    <section id="latest-news" className="py-12 sm:py-16 bg-white border-b border-[#E8E8E8]">
       <div className="xrock-container">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 pb-4 border-b border-xrock-gray-300 gap-4">
+        {/* Section Header matching Figma: THE BRIEF / Latest Intelligence */}
+        <FadeIn className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 pb-4 border-b border-[#E8E8E8] gap-4">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase text-xrock-red tracking-wider mb-1">
-              <Shield className="w-4 h-4" />
-              Real-time Field Telemetry
+            <div className="text-xs font-mono font-bold uppercase text-[#F83838] tracking-[0.18em] mb-1.5">
+              THE BRIEF
             </div>
-            <h2 className="text-2xl sm:text-3xl font-display font-extrabold text-xrock-black tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-display font-extrabold text-[#080808] tracking-tight">
               Latest Intelligence
             </h2>
           </div>
 
-          <a
-            href="#topics"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-xrock-red hover:text-xrock-red-dark transition-colors group"
+          <Link
+            href="/news"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#F83838] hover:text-[#980000] transition-colors group"
           >
             <span>View All Research Dispatches</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </div>
+          </Link>
+        </FadeIn>
 
-        {/* Article Grid: 1 prominent + 3 supporting */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {latestArticles.map((article, idx) => (
-            <ArticleCard
-              key={article.id}
-              article={article}
-              featured={idx === 0}
-            />
+        {/* Article Grid with subtle scroll stagger */}
+        <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {articles.map((article, idx) => (
+            <StaggerItem key={article.id || article.slug}>
+              <ArticleCard
+                article={article}
+                featured={idx === 0}
+              />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );
 }
-

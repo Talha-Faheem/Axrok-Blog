@@ -1,0 +1,7 @@
+# Ignore backend directory on Vercel frontend deployments
+backend
+backend/**
+data/*.json
+.git
+.github
+*.log

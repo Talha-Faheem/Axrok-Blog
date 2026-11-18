@@ -11,14 +11,14 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-xrock-gray-800">
           {/* Brand Info (2 cols on lg) */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center font-display font-black text-xrock-black text-lg">
-                X
+            <Link href="/" className="flex items-center group inline-flex mb-2">
+              <div className="relative inline-flex items-center">
+                <span className="font-display font-extrabold text-2xl tracking-tight text-white group-hover:text-neutral-200 transition-colors leading-none">
+                  AXROK
+                </span>
+                <span className="w-2 h-2 bg-[#F83838] -mt-3.5 ml-0.5 inline-block shrink-0"></span>
               </div>
-              <span className="font-display font-extrabold text-2xl tracking-tight text-white">
-                XROACK<span className="text-xrock-red">.</span>
-              </span>
-            </div>
+            </Link>
 
             <p className="text-sm text-xrock-gray-300 leading-relaxed max-w-sm font-sans">
               Understand threats. Build stronger defenses. An evidence-led technical publication covering offensive tradecraft, defensive engineering, and vulnerability analysis.
@@ -26,7 +26,7 @@ export function SiteFooter() {
 
             <div className="flex items-center gap-3 pt-2">
               <a
-                href="https://github.com/xroack"
+                href="https://github.com/axrok"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Repository"
@@ -35,10 +35,10 @@ export function SiteFooter() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://twitter.com/xroack_sec"
+                href="https://twitter.com/axrok_sec"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Twitter X profile"
+                aria-label="Twitter profile"
                 className="w-8 h-8 rounded-lg bg-xrock-gray-950 border border-xrock-gray-800 flex items-center justify-center text-xrock-gray-300 hover:text-white hover:border-xrock-red transition-colors"
               >
                 <Twitter className="w-4 h-4" />
@@ -60,29 +60,29 @@ export function SiteFooter() {
             </h4>
             <ul className="space-y-2 text-xs text-xrock-gray-300">
               <li>
-                <a href="#threat-intel" className="hover:text-white transition-colors">
+                <Link href="/threat-intelligence" className="hover:text-white transition-colors">
                   Threat Intelligence
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#vulnerability-spotlight" className="hover:text-white transition-colors">
+                <Link href="/vulnerabilities" className="hover:text-white transition-colors">
                   Vulnerability Research
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#topics" className="hover:text-white transition-colors">
+                <Link href="/category/malware-ransomware" className="hover:text-white transition-colors">
                   Malware & Ransomware
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#topics" className="hover:text-white transition-colors">
-                  Cloud & Container Security
-                </a>
+                <Link href="/category/cloud-security" className="hover:text-white transition-colors">
+                  Cloud Security
+                </Link>
               </li>
               <li>
-                <a href="#topics" className="hover:text-white transition-colors">
-                  Zero Trust & Identity
-                </a>
+                <Link href="/news" className="hover:text-white transition-colors">
+                  Cybersecurity News
+                </Link>
               </li>
             </ul>
           </div>
@@ -94,29 +94,29 @@ export function SiteFooter() {
             </h4>
             <ul className="space-y-2 text-xs text-xrock-gray-300">
               <li>
-                <a href="#guides" className="hover:text-white transition-colors">
+                <Link href="/tutorials" className="hover:text-white transition-colors">
                   Practical Hardening Guides
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#guides" className="hover:text-white transition-colors">
-                  Kernel sysctl Benchmarks
-                </a>
+                <Link href="/tutorials" className="hover:text-white transition-colors">
+                  Hands-on Labs
+                </Link>
               </li>
               <li>
-                <a href="#guides" className="hover:text-white transition-colors">
-                  Malware Analysis Sandboxes
-                </a>
+                <Link href="/resources" className="hover:text-white transition-colors">
+                  Tools & Resources
+                </Link>
               </li>
               <li>
-                <a href="#guides" className="hover:text-white transition-colors">
-                  OWASP API Defense Matrices
-                </a>
-              </li>
-              <li>
-                <a href="#vulnerability-spotlight" className="hover:text-white transition-colors">
+                <Link href="/vulnerabilities" className="hover:text-white transition-colors">
                   CVE Disclosure Telemetry
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/authors" className="hover:text-white transition-colors">
+                  Editorial Researchers
+                </Link>
               </li>
             </ul>
           </div>
@@ -128,29 +128,34 @@ export function SiteFooter() {
             </h4>
             <ul className="space-y-2 text-xs text-xrock-gray-300">
               <li>
-                <a href="#footer" className="hover:text-white transition-colors">
-                  Editorial Standards
-                </a>
+                <Link href="/about" className="hover:text-white transition-colors">
+                  About AXROK
+                </Link>
               </li>
               <li>
-                <a href="#footer" className="hover:text-white transition-colors">
-                  Coordinated Disclosure Policy
-                </a>
+                <Link href="/editorial-policy" className="hover:text-white transition-colors">
+                  Editorial Policy
+                </Link>
               </li>
               <li>
-                <a href="#footer" className="hover:text-white transition-colors">
-                  security.txt (RFC 9116)
-                </a>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact & Tips
+                </Link>
               </li>
               <li>
-                <a href="#footer" className="hover:text-white transition-colors">
-                  Privacy Policy & GDPR
-                </a>
+                <Link href="/privacy-policy" className="hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <a href="#footer" className="hover:text-white transition-colors">
+                <Link href="/terms" className="hover:text-white transition-colors">
                   Terms of Service
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin" className="text-xrock-red hover:text-white transition-colors font-mono">
+                  Admin Dashboard →
+                </Link>
               </li>
             </ul>
           </div>
@@ -158,7 +163,7 @@ export function SiteFooter() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-xrock-gray-600 font-mono">
-          <p>© {currentYear} Xroack. All rights reserved. Built with Next.js, Sanity CMS & Tailwind CSS.</p>
+          <p>© {currentYear} Axrok. All rights reserved. Built with Next.js, Sanity CMS & Tailwind CSS.</p>
           <div className="flex items-center gap-4">
             <span className="inline-flex items-center gap-1.5 text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400"></span>

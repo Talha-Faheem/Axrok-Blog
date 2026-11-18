@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { Terminal, FileCheck, KeyRound, Layers, Clock, ListOrdered, ArrowRight } from "lucide-react";
-import { PracticalGuide } from "@/types";
 
 interface GuideCardProps {
-  guide: PracticalGuide;
+  guide: any;
 }
 
 const guideIcons: Record<string, React.ReactNode> = {
@@ -19,6 +19,11 @@ const levelColors: Record<string, string> = {
 };
 
 export function GuideCard({ guide }: GuideCardProps) {
+  const level = guide.level || "Intermediate";
+  const category = guide.category || "Defensive Engineering";
+  const readingTime = guide.readingTime || guide.estimatedTime || 10;
+  const stepsCount = guide.stepsCount || 6;
+
   return (
     <article className="xrock-card p-6 flex flex-col justify-between bg-white group hover:border-xrock-gray-300">
       <div>
@@ -29,52 +34,51 @@ export function GuideCard({ guide }: GuideCardProps) {
               {guideIcons[guide.iconName] || <Terminal className="w-4 h-4" />}
             </div>
             <span className="text-xs font-mono font-medium text-xrock-gray-600">
-              {guide.category}
+              {category}
             </span>
           </div>
 
           <span
             className={`text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-full border ${
-              levelColors[guide.level] || "bg-gray-100 text-gray-800"
+              levelColors[level] || "bg-gray-100 text-gray-800"
             }`}
           >
-            {guide.level}
+            {level}
           </span>
         </div>
 
         {/* Title */}
         <h3 className="text-lg font-display font-bold text-xrock-black leading-snug group-hover:text-xrock-red-dark transition-colors">
-          <a href={`#${guide.slug}`}>{guide.title}</a>
+          <Link href={`/blog/${guide.slug}`}>{guide.title}</Link>
         </h3>
 
         {/* Excerpt */}
-        <p className="text-xs sm:text-sm text-xrock-gray-600 mt-2.5 line-clamp-3 leading-relaxed">
+        <p className="text-xs text-xrock-gray-600 mt-2 line-clamp-3 leading-relaxed font-sans">
           {guide.excerpt}
         </p>
       </div>
 
-      {/* Guide Meta Info */}
-      <div className="mt-6 pt-4 border-t border-xrock-gray-100 flex items-center justify-between text-xs text-xrock-gray-600">
+      {/* Meta Footer */}
+      <div className="pt-4 mt-4 border-t border-xrock-gray-100 flex items-center justify-between text-xs font-mono text-xrock-gray-600">
         <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1 font-mono text-[11px]">
-            <ListOrdered className="w-3.5 h-3.5 text-xrock-gray-600" />
-            {guide.stepsCount} steps
-          </span>
-          <span className="flex items-center gap-1 font-mono text-[11px]">
-            <Clock className="w-3.5 h-3.5 text-xrock-gray-600" />
-            {guide.readingTime}
-          </span>
+          <div className="flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5" />
+            <span>{readingTime}m</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <ListOrdered className="w-3.5 h-3.5" />
+            <span>{stepsCount} steps</span>
+          </div>
         </div>
 
-        <a
-          href={`#${guide.slug}`}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-xrock-black group-hover:text-xrock-red transition-colors"
+        <Link
+          href={`/blog/${guide.slug}`}
+          className="text-xrock-red hover:text-xrock-red-dark flex items-center gap-1 font-semibold group-hover:translate-x-0.5 transition-transform"
         >
           <span>Start Lab</span>
-          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-        </a>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
     </article>
   );
 }
-

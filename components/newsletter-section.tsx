@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { Mail, CheckCircle, AlertCircle, ArrowRight, ShieldCheck, Lock } from "lucide-react";
 import { subscribeToNewsletter, ActionState } from "@/app/actions/newsletter";
+import { FadeIn } from "@/components/motion";
 
 export function NewsletterSection() {
   const [state, formAction, isPending] = useActionState<ActionState | null, FormData>(
@@ -13,7 +14,7 @@ export function NewsletterSection() {
   return (
     <section id="newsletter" className="py-14 sm:py-20 bg-white border-b border-xrock-gray-100">
       <div className="xrock-container">
-        <div className="max-w-4xl mx-auto rounded-2xl bg-gradient-to-br from-xrock-gray-50 via-white to-xrock-gray-50 border border-xrock-gray-300 p-8 sm:p-12 shadow-sm relative overflow-hidden">
+        <FadeIn className="max-w-4xl mx-auto rounded-2xl bg-gradient-to-br from-xrock-gray-50 via-white to-xrock-gray-50 border border-xrock-gray-300 p-8 sm:p-12 shadow-sm relative overflow-hidden">
           {/* Subtle red accent bar on top of card */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-xrock-red via-xrock-crimson to-xrock-red-dark" />
 
@@ -96,7 +97,7 @@ export function NewsletterSection() {
               </span>
             </div>
           </form>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

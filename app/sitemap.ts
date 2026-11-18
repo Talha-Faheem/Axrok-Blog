@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { latestArticles, practicalGuides, exploreTopics, heroArticle } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://xroack-security.com";
+  const baseUrl = "https://axrok-security.com";
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -10,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "hourly",
       priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/news`,
+      lastModified: new Date(),
+      changeFrequency: "hourly",
+      priority: 0.9,
     },
   ];
 

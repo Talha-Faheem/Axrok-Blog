@@ -1,15 +1,15 @@
-# Xrock — Cybersecurity Publication Design Specification
+# Axrok — Cybersecurity Publication Design Specification
 
 **Version:** 1.0  
 **Status:** Initial design direction  
-**Product:** Xrock cybersecurity information and educational blog  
+**Product:** Axrok cybersecurity information and educational blog  
 **Audience:** Cybersecurity learners, developers, IT professionals, security practitioners, and technology-curious readers
 
 ---
 
 ## 1. Product and brand direction
 
-Xrock is a cybersecurity-focused editorial publication. It should feel like a credible technology newsroom: clear, current, technically informed, and approachable.
+Axrok is a cybersecurity-focused editorial publication. It should feel like a credible technology newsroom: clear, current, technically informed, and approachable.
 
 ### Brand positioning
 - **Purpose:** Explain cybersecurity developments and practical security concepts in a useful, understandable way.
@@ -26,7 +26,7 @@ Use the uploaded CN Media News reference as inspiration for:
 - Editorial image-led feature cards.
 - Consistent visual identity across desktop and mobile.
 
-Do **not** copy the CN logo, its exact compositions, or its news-brand identity. Xrock should have its own wordmark and graphic language. Use cybersecurity imagery selectively; avoid generic green code rain, excessive neon, and cliché hooded-hacker stock photos.
+Do **not** copy the CN logo, its exact compositions, or its news-brand identity. Axrok should have its own wordmark and graphic language. Use cybersecurity imagery selectively; avoid generic green code rain, excessive neon, and cliché hooded-hacker stock photos.
 
 ---
 
@@ -36,23 +36,23 @@ The following values are approximate colors sampled from the supplied reference 
 
 | Token | Hex | Intended use |
 |---|---|---|
-| `--xrock-red` | `#F83838` | Primary brand color, main CTA, active states |
-| `--xrock-red-dark` | `#980000` | Deep red panels, hover/depth accents |
-| `--xrock-crimson` | `#F00038` | Small highlights, tags, secondary accents |
-| `--xrock-black` | `#080808` | Main text, dark footer, dark feature sections |
-| `--xrock-white` | `#FFFFFF` | Main page and card surfaces |
-| `--xrock-gray-100` | `#E8E8E8` | Borders, dividers, subtle surfaces |
+| `--Axrok-red` | `#F83838` | Primary brand color, main CTA, active states |
+| `--Axrok-red-dark` | `#980000` | Deep red panels, hover/depth accents |
+| `--Axrok-crimson` | `#F00038` | Small highlights, tags, secondary accents |
+| `--Axrok-black` | `#080808` | Main text, dark footer, dark feature sections |
+| `--Axrok-white` | `#FFFFFF` | Main page and card surfaces |
+| `--Axrok-gray-100` | `#E8E8E8` | Borders, dividers, subtle surfaces |
 
 ### Additional neutral UI colors
 These are proposed supporting neutrals for legibility and should not replace the sampled brand palette.
 
 | Token | Hex | Intended use |
 |---|---|---|
-| `--xrock-gray-50` | `#F7F7F7` | Page background sections |
-| `--xrock-gray-300` | `#D1D1D1` | Borders |
-| `--xrock-gray-600` | `#666666` | Secondary text |
-| `--xrock-gray-800` | `#262626` | Dark surfaces |
-| `--xrock-gray-950` | `#111111` | Deep dark surfaces |
+| `--Axrok-gray-50` | `#F7F7F7` | Page background sections |
+| `--Axrok-gray-300` | `#D1D1D1` | Borders |
+| `--Axrok-gray-600` | `#666666` | Secondary text |
+| `--Axrok-gray-800` | `#262626` | Dark surfaces |
+| `--Axrok-gray-950` | `#111111` | Deep dark surfaces |
 
 ### Color usage rules
 - Keep article reading pages predominantly white.
@@ -162,7 +162,7 @@ Build the homepage in this order.
 A slim strip for a major security advisory or important publication update. Hide it when there is no genuinely important announcement.
 
 ### 6.2 Main header
-- Xrock wordmark on the left.
+- Axrok wordmark on the left.
 - Primary navigation in the center/right.
 - Search icon or accessible search field.
 - Red “Subscribe” or “Get updates” button.
@@ -214,7 +214,7 @@ A clean subscription panel:
 Suggested copy: “Get practical security insights in your inbox. No noise, just useful intelligence.”
 
 ### 6.9 Footer
-- Xrock wordmark and short description.
+- Axrok wordmark and short description.
 - Explore links.
 - Categories.
 - About / Contact.
@@ -433,7 +433,7 @@ For security advisories:
 ┌─────────────────────────────────────────────────────────────┐
 │ OPTIONAL SECURITY ANNOUNCEMENT                               │
 ├─────────────────────────────────────────────────────────────┤
-│ XROCK       News  Intelligence  Tutorials  Vulnerabilities  │
+│ Axrok       News  Intelligence  Tutorials  Vulnerabilities  │
 │                                      Search   Subscribe      │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
@@ -478,10 +478,10 @@ Treat this document as the design source of truth.
 7. Implement functional navigation, search, pagination, and newsletter states; do not leave decorative controls pretending to work.
 8. Keep content data separate from presentation.
 9. Add SEO metadata, semantic markup, accessibility, and performance optimizations.
-10. Do not invent an existing Xrock logo. Use a clean text wordmark until official brand assets are supplied.
+10. Do not invent an existing Axrok logo. Use a clean text wordmark until official brand assets are supplied.
 
 ### Acceptance checklist
-- [ ] Consistent Xrock red / black / white palette.
+- [ ] Consistent Axrok red / black / white palette.
 - [ ] Space Grotesk, Inter, and JetBrains Mono typography.
 - [ ] Responsive homepage, category listing, and article detail page.
 - [ ] Reusable article cards and metadata.
@@ -497,11 +497,11 @@ Treat this document as the design source of truth.
 
 ## 17. Research references
 
-These references informed the proposed content architecture and editorial direction. They are inspiration, not assets to copy.
+**These references informed the proposed content architecture and editorial direction. They are inspiration, not assets to copy.**
 
 - [XRISKO — Cybersecurity Intelligence](https://xrisko.com/) — threat intelligence and technical article presentation.
 - [Cyberox Technologies — Cybersecurity Blog](https://www.cyberoxtech.com/blog.html) — professional educational content and topic clusters.
 - [Hackrocks — Blog](https://hackrocks.com/blog/) — practical cybersecurity learning content.
-- [100.3 The X](https://www.xrock.com/) — the current destination reached by `xrock.com`; this is a radio station, not the proposed cybersecurity publication.
+- [100.3 The X](https://www.Axrok.com/) — the current destination reached by `Axrok.com`; this is a radio station, not the proposed cybersecurity publication.
 
-**Domain note:** Confirm the intended Xrock domain before launch. The current `xrock.com` destination does not appear to be the cybersecurity blog described in this specification.
+**Domain note:** Confirm the intended Axrok domain before launch. The current `Axrok.com` destination does not appear to be the cybersecurity blog described in this specification.

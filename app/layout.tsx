@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
+import "@/Axrok-design-tokens.css";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { AnnouncementBanner } from "@/components/announcement-banner";
+import { PublicLayoutWrapper } from "@/components/public-layout-wrapper";
 import { JsonLd } from "@/components/json-ld";
 import { siteMetadata } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: {
-    default: "Xroack — Understand Threats. Build Stronger Defenses.",
-    template: "%s | Xroack Cybersecurity Intelligence",
+    default: "AXROK — Understand Threats. Build Stronger Defenses.",
+    template: "%s | AXROK Cybersecurity Intelligence",
   },
   description:
     "Credible, technically informed cybersecurity news, threat intelligence, vulnerability research, and practical defense architecture.",
@@ -23,19 +22,19 @@ export const metadata: Metadata = {
     "AppSec",
     "Zero Trust",
   ],
-  authors: [{ name: "Xroack Editorial Team" }],
-  creator: "Xroack",
-  publisher: "Xroack Media",
-  metadataBase: new URL("https://xroack-security.com"),
+  authors: [{ name: "AXROK Editorial Team" }],
+  creator: "AXROK",
+  publisher: "AXROK Media",
+  metadataBase: new URL("https://axrok-security.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Xroack — Understand Threats. Build Stronger Defenses.",
+    title: "AXROK — Understand Threats. Build Stronger Defenses.",
     description:
       "Credible, technically informed cybersecurity news, threat intelligence, vulnerability analyses, and practical defense guides.",
-    url: "https://xroack-security.com",
-    siteName: "Xroack",
+    url: "https://axrok-security.com",
+    siteName: "AXROK",
     locale: "en_US",
     type: "website",
     images: [
@@ -43,15 +42,15 @@ export const metadata: Metadata = {
         url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=630&q=80",
         width: 1200,
         height: 630,
-        alt: "Xroack Cybersecurity Intelligence",
+        alt: "AXROK Cybersecurity Intelligence",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Xroack — Cybersecurity Publication & Threat Intelligence",
+    title: "AXROK — Cybersecurity Publication & Threat Intelligence",
     description: "Understand threats. Build stronger defenses.",
-    creator: "@xroack_sec",
+    creator: "@axrok_sec",
     images: [
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=630&q=80",
     ],
@@ -86,10 +85,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col font-sans bg-white text-xrock-black selection:bg-xrock-red selection:text-white">
         <JsonLd />
-        <AnnouncementBanner />
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <PublicLayoutWrapper>{children}</PublicLayoutWrapper>
       </body>
     </html>
   );

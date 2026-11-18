@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
+const BACKEND_URL =
+  process.env.BACKEND_URL ||
+  process.env.NEXT_PUBLIC_BACKEND_URL;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
@@ -13,12 +17,22 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
     ],
   },
-  experimental: {
-    serverActions: {
-      bodySizeLimit: "2mb",
-    },
+  async rewrites() {
+    if (BACKEND_URL) {
+      return [
+        {
+          source: "/api/backend/:path*",
+          destination: `${BACKEND_URL}/api/:path*`,
+        },
+      ];
+    }
+    return [];
   },
 };
 
